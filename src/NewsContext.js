@@ -22,7 +22,7 @@ function ContextProvider({children}) {
 
 
     return (
-        <Context.Provider value={{news}}>
+        <Context.Provider value={news}>
             {children}
         </Context.Provider>
     )

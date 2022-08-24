@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
-import {Switch, Route} from "react-router-dom"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import News from "./pages/News"
+import SingleNews from "./pages/SingleNews"
 import './App.css';
 
 function App() {
   return (
-    <h1>Hello</h1>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <News />
+        </Route>
+        <Route path="/news/:newsId">
+          <SingleNews />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
