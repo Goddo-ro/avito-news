@@ -4,7 +4,7 @@ import Item from "../components/Item"
 
 
 function News() {
-    const news = useContext(Context);
+    const {news} = useContext(Context);
 
     const newsItems = news.map(item => <Item author={item.by}
                                             comments={item.kids}
