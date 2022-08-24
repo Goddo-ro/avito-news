@@ -33,24 +33,30 @@ function Item(props) {
         return Math.floor(seconds) + " seconds";
     }
 
+    function getLocation(url) {
+      let l = document.createElement("a");
+      l.href = url;
+      return l.hostname;
+    }
 
     return (
-        <li className="news-item">
-            <Link to={`news/${props.id}`}>
-                <h3>{props.title}</h3>
-            </Link>
-            <div className="upload-info">
-                <p>
-                    {props.score} points by
-                </p>
-                <p>
-                    {props.author} 
-                </p>
-                <a href="" className="date" title={date.toLocaleDateString()}>
-                    {timeSince(date)} ago
-                </a>
-            </div>
-        </li>
+      <>
+        <Link to={`news/${props.id}`}>
+            <h3>{props.title}</h3>
+        </Link>
+        {props.url ? <a href={props.url}>{getLocation(props.url)}</a> : ""}
+        <div className="upload-info">
+            <p>
+                {props.score} points by
+            </p>
+            <p>
+                {props.author} 
+            </p>
+            <a href="" className="date" title={date.toLocaleDateString()}>
+                {timeSince(date)} ago
+            </a>
+        </div>
+      </>
     )   
 }
 

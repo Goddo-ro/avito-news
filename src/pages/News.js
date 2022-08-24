@@ -6,14 +6,14 @@ import Item from "../components/Item"
 function News() {
     const {news} = useContext(Context);
 
-    const newsItems = news.map(item => <Item author={item.by}
-                                            comments={item.kids}
-                                            title={item.title}
-                                            score={item.score}
-                                            time={item.time}
-                                            key={item.id}
-                                            id={item.id}
-                                />)
+    const newsItems = news.map(item => <li key={item.id}>
+                                            <Item author={item.by}
+                                                title={item.title}
+                                                score={item.score}
+                                                time={item.time}
+                                                id={item.id}/>
+                                        </li>
+                                )
 
     return (
         <ol className="news-container">
