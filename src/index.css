@@ -6,6 +6,11 @@
   --color-red: #B83A2C;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -18,13 +23,17 @@ button {
   cursor: pointer;
 }
 
+.news-container {
+  padding-top: 16px;
+}
+
 .a, a {
   text-decoration: none;
 }
 
-.item:not(:last-child) {
+.item {
   margin-bottom: 10px;
-}
+} 
 
 .item h3 {
   font-family: 'Roboto Flex', sans-serif;
