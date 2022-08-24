@@ -1,0 +1,28 @@
+header {
+    font-family: 'Aboreto', cursive;
+    padding: 8px;
+    background-color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header img {
+    height: 2rem;   
+    filter: invert(25%) sepia(70%) saturate(2207%) hue-rotate(345deg) brightness(90%) contrast(87%);
+}
+
+header h2 {
+    margin: 0;
+}
+
+header h2 span {
+    color: var(--color-red);
+    font-size: 2rem;
+}
