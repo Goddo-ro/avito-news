@@ -4,7 +4,7 @@ import Item from "../components/Item"
 
 
 function News() {
-    const {news} = useContext(Context);
+    const {news, updateNews} = useContext(Context);
 
     const newsItems = news.map(item => <li key={item.id}>
                                             <Item author={item.by}
@@ -16,9 +16,12 @@ function News() {
                                 )
 
     return (
-        <ol className="news-container">
-            {newsItems}
-        </ol>
+        <section className="news">
+            <button onClick={updateNews}>Update news</button>
+            <ol className="news-container">
+                {newsItems}
+            </ol>
+        </section>
     )
 }
 
