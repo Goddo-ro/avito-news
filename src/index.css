@@ -23,6 +23,20 @@ button {
   cursor: pointer;
 }
 
+@keyframes rotate {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(360deg)}
+}
+  
+  
+.refresh-start {
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: running;
+}
+
 .news-container {
   padding-top: 16px;
 }
@@ -47,6 +61,7 @@ button {
   align-items: center;
   gap: 4px;
   margin: 0;
+  margin-left: 18px;
 }
 
 .upload-info > * {

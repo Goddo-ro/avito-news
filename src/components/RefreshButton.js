@@ -3,11 +3,21 @@ import {IoMdRefresh} from "react-icons/io"
 
 
 function refreshButton(props) {
+    function refreshContent() {
+        props.refresh();
+        const provider = document.querySelector(".icon-provider");
+        provider.classList.add("refresh-start");
+        
+        setTimeout(function () {
+            provider.classList.remove("refresh-start");
+        }, 2000)
+    }
+
     return (
-        <button onClick={props.refresh}>
-            <IconContext.Provider value={{ size: "2rem", className: "refresh-icon" }}>
+        <button id="refresh-button" onClick={refreshContent}>
+            <IconContext.Provider value={{ size: "2rem", className: "icon-provider" }}>
                 <div>
-                    <IoMdRefresh />
+                    <IoMdRefresh id="refresh-icon" />
                 </div>
             </IconContext.Provider>
         </button>
