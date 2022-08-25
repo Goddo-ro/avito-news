@@ -4,6 +4,7 @@ import News from "./pages/News"
 import SingleNews from "./pages/SingleNews"
 import './App.css';
 
+
 function App() {
   return (
     <>

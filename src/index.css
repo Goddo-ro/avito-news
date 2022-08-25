@@ -8,10 +8,10 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
 }
 
 body {
+  font-family: 'Roboto Flex', sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--color-white);
@@ -23,11 +23,14 @@ button {
   cursor: pointer;
 }
 
+.single-news {
+  padding: 0 25px;
+}
+
 @keyframes rotate {
   from {transform: rotate(0deg)}
   to {transform: rotate(360deg)}
 }
-  
   
 .refresh-start {
   animation-name: rotate;
@@ -45,14 +48,34 @@ button {
   text-decoration: none;
 }
 
+.a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .item {
   margin-bottom: 10px;
 } 
 
-.item h3 {
+.item .upload-info {
+  margin-left: 24px;
+}
+
+.item h2 {
   font-family: 'Roboto Flex', sans-serif;
   color: var(--color-dark-blue);
   margin: 0;
+}
+
+.news-link {
+  color: var(--color-grey);
+}
+
+.news-link:hover,
+.news-link:active,
+.news-link:focus {
+  text-decoration: underline;
 }
 
 .upload-info {
@@ -61,7 +84,6 @@ button {
   align-items: center;
   gap: 4px;
   margin: 0;
-  margin-left: 18px;
 }
 
 .upload-info > * {
@@ -70,4 +92,28 @@ button {
 
 .date:hover {
   text-decoration: underline;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment .upload-info {
+  font-size: .75rem;
+}
+
+.comment > p {
+  margin: 8px 0;
+  margin-top: 0;
+}
+
+.show-replies {
+  margin-left: 8px;
+  width: auto;
+  color: var(--color-blue);
+  cursor: pointer;
+}
+
+.show-replies:hover {
+  color: var(--color-dark-blue);
 }

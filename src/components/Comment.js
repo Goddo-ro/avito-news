@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import {useEffect, useState} from "react"
+import { trackPromise } from 'react-promise-tracker'
 import timeSince from "../timeSince"
 
 
@@ -35,19 +36,23 @@ function Comment(props) {
     function updateKids() {
         if (!props.kids) return;
         props.kids.forEach(id => {
-            fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
-                .then(res => res.json())
-                .then(data => {
-                    setComments(oldComments => [...oldComments, <Comment text={data.text}
-                                                                                    author={data.by}
-                                                                                    time={data.time}
-                                                                                    kids={data.kids}
-                                                                                    parent={data.parent}
-                                                                                    key={nanoid()}
-                                                                                    marginLeft={50}
-                                                                            />]
-                );
-            })
+            trackPromise(
+                fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.deleted) {
+                            setComments(oldComments => [...oldComments, <Comment text={data.text}
+                                                                                author={data.by}
+                                                                                time={data.time}
+                                                                                kids={data.kids}
+                                                                                parent={data.parent}
+                                                                                key={nanoid()}
+                                                                                marginLeft={50}
+                                                                        />]
+                                        );
+                        }
+                })
+            )
         })
     }
 
@@ -65,7 +70,10 @@ function Comment(props) {
                 <p>{decodeEntities(props.text)}</p>
                 {isShowingKids 
                     ? comments
-                    : props.kids && <a onClick={() => {setShowingKids(true)}}>Show replies</a>}
+                    : props.kids && <a className="show-replies" 
+                                        onClick={() => {setShowingKids(true)}}>
+                                            Show replies
+                                    </a>}
             </div>
         </>
     )

@@ -14,9 +14,11 @@ function Item(props) {
     return (
       <>
         <Link className="a" to={`news/${props.id}`}>
-            <h3>{props.index && props.index + "."} {props.title}</h3>
+            <h2>{props.index && props.index + "."} {props.title}</h2>
+            {props.url ? <a className="news-link" href={props.url}>
+              ({getLocation(props.url)})
+              </a> : ""}
         </Link>
-        {props.url ? <a href={props.url}>{getLocation(props.url)}</a> : ""}
         <div className="upload-info">
             <p>
                 {props.score} points by
@@ -24,7 +26,7 @@ function Item(props) {
             <p className="author">
                 {props.author} 
             </p>
-            <a href="" className="date" title={date.toLocaleDateString()}>
+            <a href="" className="date" title={date.toString()}>
                 {timeSince(date)} ago
             </a>
         </div>
