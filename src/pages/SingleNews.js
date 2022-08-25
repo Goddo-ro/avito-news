@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import {useParams, useHistory} from "react-router-dom"
+import { trackPromise } from 'react-promise-tracker'
 import Item from "../components/Item"
 import Comment from "../components/Comment"
 import {nanoid} from "nanoid"
@@ -12,13 +13,15 @@ function SingleNews() {
 
     useEffect(() => {
         let interval;
-        fetch(`https://hacker-news.firebaseio.com/v0/item/${newsId}.json?print=pretty`)
-            .then(res => res.json())
-            .then(data => {
-                setItem(data);
-                updateComments(data.kids);
-                interval = setInterval(() => {updateComments(data.kids)}, 1000 * 60);
-            });
+        trackPromise(
+            fetch(`https://hacker-news.firebaseio.com/v0/item/${newsId}.json?print=pretty`)
+                .then(res => res.json())
+                .then(data => {
+                    setItem(data);
+                    updateComments(data.kids);
+                    interval = setInterval(() => {updateComments(data.kids)}, 1000 * 60);
+                })
+        )
         return () => {
             clearInterval(interval);
         }

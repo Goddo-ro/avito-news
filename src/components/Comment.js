@@ -27,32 +27,25 @@ function Comment(props) {
         return decodeHTMLEntities;
       })();
 
-
-    useEffect(() => {
-        updateKids()
-    }, [])
-
-
     function updateKids() {
         if (!props.kids) return;
+        setShowingKids(true);
         props.kids.forEach(id => {
-            trackPromise(
-                fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (!data.deleted) {
-                            setComments(oldComments => [...oldComments, <Comment text={data.text}
-                                                                                author={data.by}
-                                                                                time={data.time}
-                                                                                kids={data.kids}
-                                                                                parent={data.parent}
-                                                                                key={nanoid()}
-                                                                                marginLeft={50}
-                                                                        />]
-                                        );
-                        }
-                })
-            )
+            fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.deleted) {
+                        setComments(oldComments => [...oldComments, <Comment text={data.text}
+                                                                            author={data.by}
+                                                                            time={data.time}
+                                                                            kids={data.kids}
+                                                                            parent={data.parent}
+                                                                            key={nanoid()}
+                                                                            marginLeft={50}
+                                                                    />]
+                                    );
+                    }
+            })
         })
     }
 
@@ -71,7 +64,7 @@ function Comment(props) {
                 {isShowingKids 
                     ? comments
                     : props.kids && <a className="show-replies" 
-                                        onClick={() => {setShowingKids(true)}}>
+                                        onClick={() => {updateKids(true)}}>
                                             Show replies
                                     </a>}
             </div>
