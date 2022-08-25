@@ -17,6 +17,10 @@ body {
   background-color: var(--color-white);
 }
 
+section {
+  margin-top: 18px;
+}
+
 button {
   border: none;
   background: none;
@@ -52,6 +56,10 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.date {
+  cursor: pointer;
 }
 
 .item {
@@ -94,6 +102,10 @@ button {
   text-decoration: underline;
 }
 
+.comments-title {
+  display: flex;
+}
+
 .comment {
   margin-bottom: 10px;
 }
@@ -116,4 +128,8 @@ button {
 
 .show-replies:hover {
   color: var(--color-dark-blue);
+}
+
+.single-news h5 {
+  margin: 0;
 }

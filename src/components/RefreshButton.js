@@ -15,7 +15,7 @@ function refreshButton(props) {
 
     return (
         <button id="refresh-button" onClick={refreshContent}>
-            <IconContext.Provider value={{ size: "2rem", className: "icon-provider" }}>
+            <IconContext.Provider value={{ size: props.size, className: "icon-provider" }}>
                 <div>
                     <IoMdRefresh id="refresh-icon" />
                 </div>

@@ -7,13 +7,19 @@ header {
     justify-content: space-between;
 }
 
-header div {
+header > div {
+    display: flex;
+    align-items: center;
+}
+
+header .title {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 header img {
+    margin-left: 20px;
     height: 2rem;   
     filter: invert(25%) sepia(70%) saturate(2207%) hue-rotate(345deg) brightness(90%) contrast(87%);
 }

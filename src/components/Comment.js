@@ -35,14 +35,15 @@ function Comment(props) {
                 .then(res => res.json())
                 .then(data => {
                     if (!data.deleted) {
-                        setComments(oldComments => [...oldComments, <Comment text={data.text}
-                                                                            author={data.by}
-                                                                            time={data.time}
-                                                                            kids={data.kids}
-                                                                            parent={data.parent}
-                                                                            key={nanoid()}
-                                                                            marginLeft={50}
-                                                                    />]
+                        setComments(oldComments => [...oldComments, 
+                                                    <Comment text={data.text}
+                                                            author={data.by}
+                                                            time={data.time}
+                                                            kids={data.kids}
+                                                            parent={data.parent}
+                                                            key={nanoid()}
+                                                            marginLeft={50}
+                                                    />]
                                     );
                     }
             })
@@ -56,7 +57,7 @@ function Comment(props) {
                     <p>
                         By {props.author} 
                     </p>
-                    <a href="" className="date" title={date.toLocaleDateString()}>
+                    <a className="date" title={date.toString()}>
                         {timeSince(date)} ago
                     </a>
                 </div>

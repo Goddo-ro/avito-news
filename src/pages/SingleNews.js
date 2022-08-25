@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
-import {useParams, useHistory} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import { trackPromise } from 'react-promise-tracker'
+import RefreshButton from "../components/RefreshButton"
 import Item from "../components/Item"
 import Comment from "../components/Comment"
 import {nanoid} from "nanoid"
@@ -9,7 +10,6 @@ function SingleNews() {
     const [item, setItem] = useState({});
     const [comments, setComments] = useState([]);
     const {newsId} = useParams();
-    const history = useHistory();
 
     useEffect(() => {
         let interval;
@@ -28,7 +28,7 @@ function SingleNews() {
     }, []);
 
 
-    function updateComments(ids) {
+    function updateComments(ids = item.kids) {
         if (!ids) return;
         setComments([]);
         ids.forEach(id => {
@@ -51,7 +51,6 @@ function SingleNews() {
 
     return (
         <section className="single-news">
-            <button onClick={() => {history.goBack()}}>Go back</button>
             <div className="item">
                 <Item author={item.by}
                         title={item.title}
@@ -62,8 +61,10 @@ function SingleNews() {
                         id={item.id}
                 />
             </div>
-            <h5>Comments</h5>
-            <button onClick={() => {updateComments(item.kids)}}>Update comments</button>
+            <div className="comments-title">
+                <h5>Comments</h5>
+                <RefreshButton refresh={updateComments} size="14px" />
+            </div>
             {comments}
         </section>
     )

@@ -26,7 +26,7 @@ function Item(props) {
             <p className="author">
                 {props.author} 
             </p>
-            <a href="" className="date" title={date.toString()}>
+            <a className="date" title={date.toString()}>
                 {timeSince(date)} ago
             </a>
         </div>
